@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh sách Nhóm</title>
+</head>
+<body>
+  <h1>Danh sách Nhóm</h1>
+  <ul>
+    <% nhomList.forEach(nhom => { %>
+      <li><a href="/api/sanpham/nhom/<%= nhom.idnhom %>"><%= nhom.ten %></a></li>
+    <% }) %>
+  </ul>
+</body>
+</html>

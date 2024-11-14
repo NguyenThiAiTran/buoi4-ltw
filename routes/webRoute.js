@@ -5,6 +5,9 @@ import { renderContact } from '../controllers/ContactController.js';
 import * as UserController from '../controllers/UserController.js';
 import { renderLogin, handleLogin } from '../controllers/LoginController.js';
 import { checkAuth, checkAdmin, checkUser } from '../middlewares/authMiddleware.js';
+import { getAllNhom } from '../controllers/NhomController.js';
+import { getAllSanpham, getSanphamByNhom, getSanphamById } from '../controllers/SanphamController.js';
+
 
 const router = express.Router();
 
@@ -41,5 +44,14 @@ router.put('/api/users/:id', UserController.apiUpdateUser);
 router.delete('/api/users/:id', UserController.apiDeleteUser);
 router.post('/api/login', UserController.apiLogin);
 router.post('/api/logout', UserController.apiLogout);
+
+
+// Routes cho nhóm
+router.get('/api/nhom', getAllNhom); // Lấy danh sách tất cả các nhóm
+
+// Routes cho sản phẩm
+router.get('/api/sanpham', getAllSanpham); // Lấy danh sách tất cả sản phẩm
+router.get('/api/sanpham/nhom/:idnhom', getSanphamByNhom); // Lấy sản phẩm theo nhóm
+router.get('/api/sanpham/:masp', getSanphamById); // Lấy chi tiết sản phẩm
 
 export default router;
